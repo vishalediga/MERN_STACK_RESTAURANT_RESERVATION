@@ -15,7 +15,7 @@ console.log("Allowed frontend URL:", process.env.FRONTEND_URL);
 app.use(
   cors({
     origin: function(origin, callback) {
-      const allowedOrigins = ["https://mern-stack-restaurant-reservation-backend.onrender.com", "https://mern-stack-restaurant-reservation-1obj.onrender.com/"];
+      const allowedOrigins = ["https://mern-stack-restaurant-reservation-1obj.onrender.com", "https://mern-stack-restaurant-reservation-1obj.onrender.com/"];
       if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
         callback(null, true);
       } else {
