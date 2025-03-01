@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
+import { data } from "../restApi.json";
 import { HiOutlineArrowRight } from "react-icons/hi";
 
 const About = () => {
@@ -21,12 +22,24 @@ const About = () => {
               iusto ipsum qui dolore ex, accusantium repellat mollitia
               repellendus.
             </p>
-            <Link to={"/"}>
-              Explore Menu{" "}
+            
+            {data[0].navbarLinks
+  .filter((element) => element.id === 6)
+  .map((element) => (
+    <Link
+      to={element.link}
+      spy={true}
+      smooth={true}
+      duration={500}
+      key={element.id}
+    >
+      Explore Menu{" "}
               <span>
                 <HiOutlineArrowRight />
               </span>
-            </Link>
+    </Link>
+))}
+ 
           </div>
           <div className="banner">
             <img src="about.png" alt="about" />

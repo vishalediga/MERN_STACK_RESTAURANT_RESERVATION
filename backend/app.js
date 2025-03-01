@@ -14,11 +14,19 @@ console.log("Allowed frontend URL:", process.env.FRONTEND_URL);
 // CORS configuration
 app.use(
   cors({
-    origin: "http://127.0.0.1:5173", //process.env.FRONTEND_URL
-    methods: ["POST", "GET", "OPTIONS"], // Include other methods as necessary
+    origin: function(origin, callback) {
+      const allowedOrigins = ["http://localhost:5173", "http://127.0.0.1:5173"];
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["POST", "GET", "OPTIONS"],
     credentials: true,
   })
 );
+
 
 // Middleware for parsing JSON and URL-encoded data
 app.use(express.json());

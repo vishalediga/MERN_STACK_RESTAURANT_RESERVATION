@@ -1,10 +1,16 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Adv from "./Adv";
+import { BrowserRouter } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
     <section className="heroSection" id="heroSection">
+    
       <Navbar />
+      <Adv/>
+
+      
       <div className="container">
         <div className="banner">
           <div className="largeBox">
